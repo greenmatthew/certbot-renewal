@@ -63,7 +63,8 @@ test: install-script
 uninstall-prod:
     sudo systemctl stop certbot-renewal.timer
     sudo systemctl disable certbot-renewal.timer
-    sudo rm /etc/systemd/system/certbot-renewal.{service,timer}
+    sudo rm /etc/systemd/system/certbot-renewal.service
+    sudo rm /etc/systemd/system/certbot-renewal.timer
     sudo systemctl daemon-reload
     @echo "Production certbot renewal timer removed"
 
@@ -71,12 +72,15 @@ uninstall-prod:
 uninstall-test:
     sudo systemctl stop certbot-renewal-test.timer
     sudo systemctl disable certbot-renewal-test.timer
-    sudo rm /etc/systemd/system/certbot-renewal-test.{service,timer}
+    sudo rm /etc/systemd/system/certbot-renewal-test.service
+    sudo rm /etc/systemd/system/certbot-renewal-test.timer
     sudo systemctl daemon-reload
     @echo "Test certbot renewal timer removed"
 
 # Uninstall both timers
-uninstall: uninstall-prod uninstall-test
+uninstall: 
+    -just uninstall-prod
+    -just uninstall-test
 
 # View production logs
 logs:
