@@ -1,7 +1,7 @@
 # Justfile for installing a timer for certbot
 # Ensures that certbot is up-to-date before performing any renewals
 
-renewal_script := certbot-renewal.sh
+renewal_script := "certbot-renewal.sh"
 
 _default: help
 
