@@ -1,10 +1,10 @@
 [Unit]
-Description=Run certbot renewal test every 5 minutes
+Description=Run certbot renewal test every 10 minutes
 Requires=certbot-renewal-test.service
 
 [Timer]
-OnCalendar=*:0/5
-RandomizedDelaySec=60
+OnCalendar=*:0/10
+RandomizedDelaySec=15
 Persistent=true
 
 [Install]
