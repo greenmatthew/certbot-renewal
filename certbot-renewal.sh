@@ -20,6 +20,6 @@ pipx inject certbot certbot-dns-cloudflare --force || echo "$(date): Failed to u
 
 # Run renewal (with or without --dry-run)
 echo "$(date): Running certificate renewal..."
-certbot renew $DRY_RUN --dns-cloudflare --dns-cloudflare-credentials /etc/letsencrypt/cloudflare/credentials.ini -v # --quiet
+certbot renew $DRY_RUN --dns-cloudflare --dns-cloudflare-credentials /etc/letsencrypt/cloudflare/credentials.ini --dns-cloudflare-propagation-seconds 60 -v
 
 echo "$(date): Certbot renewal completed successfully"
